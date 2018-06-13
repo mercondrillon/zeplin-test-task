@@ -13,6 +13,7 @@ const MapStateToProps = state => ({
 
 
 
+
 const initialState = {
   NoteId: null,
   NoteText: null, // noteDescription
