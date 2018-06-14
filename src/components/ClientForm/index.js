@@ -2,7 +2,7 @@ import React from 'react';
 import API from '../../services/http';
 import { connect } from 'react-redux';
 import { cloneDeep } from 'lodash'
-import { Form, Input, Select, Button, notification, Upload, Icon, message  } from 'antd';
+import { Form, Input, Select, Button, notification  } from 'antd';
 import { showLoading, hideLoading } from 'react-redux-loading-bar';
 
 
