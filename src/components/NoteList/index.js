@@ -10,7 +10,7 @@ const MapStateToProps = state => ({
 class NoteListComponent extends React.Component {
   state = {
     notes: [],
-    noteQuery: '',
+    noteQuery: null,
     noteModal: {
       instance: {},
       show: false,
