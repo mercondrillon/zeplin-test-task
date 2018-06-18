@@ -5,13 +5,13 @@ import { Link } from 'react-router-dom';
 const Navigation = () => (
   <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
     <Menu.Item key="1">
-      <Link to="/zeplin-test-task/notes">
+      <Link to="/notes">
         <Icon type="desktop" />
         Notes
       </Link>
     </Menu.Item>
     <Menu.Item key="2">
-      <Link to="/zeplin-test-task/notes-create">
+      <Link to="/notes-create">
         <Icon type="file-add" />
         Create Note
       </Link>
