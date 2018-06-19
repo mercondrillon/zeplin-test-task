@@ -5,13 +5,15 @@ import App from './components/App';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 import registerServiceWorker from './registerServiceWorker';
-import { HashRouter } from  'react-router-dom';
+import { HashRouter as Router } from  'react-router-dom';
 
 render(
   <Provider store={store}>
-      <HashRouter>
-        <App />
-      </HashRouter>
+      <Router>
+        <div>
+          <App />
+        </div>
+      </Router>
   </Provider>, 
   document.getElementById('root')
 );
