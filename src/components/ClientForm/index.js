@@ -6,6 +6,7 @@ import { Form, Input, Select, Button, notification  } from 'antd';
 import { showLoading, hideLoading } from 'react-redux-loading-bar';
 
 
+
 const MapStateToProps = state => ({
   notes: state.notes,
   codes: state.codes,
