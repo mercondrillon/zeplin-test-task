@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { chunk, truncate, filter, isEmpty } from 'lodash';
+import { chunk, truncate, filter, isEmpty, toLower } from 'lodash';
 import { Card, Icon, Row, Col, Modal, Input } from 'antd';
-
+  
 const MapStateToProps = state => ({
   notes: state.notes,
 });
@@ -42,9 +42,12 @@ class NoteListComponent extends React.Component {
 
   onSearchButton(value) {
     const state = Object.assign({}, this.state);
+    value = toLower(value);
     if (!isEmpty(value)) {
-      const values = filter(state.notes, ({ Name, Description }) => (Name.indexOf(value) > -1 || Description.indexOf(value) > -1));
-      state.notes = values;
+      const filteredNotes = filter(this.props.notes, ({ Name, Description }) => {
+        return (toLower(Name).indexOf(value) > -1 || toLower(Description).indexOf(value) > -1);
+      });
+      state.notes = filteredNotes;
       this.setState(state);
     }
     else {
