@@ -9,7 +9,7 @@ import { HashRouter } from  'react-router-dom';
 
 render(
   <Provider store={store}>
-      <HashRouter basename='/zeplin-test-task'>
+      <HashRouter basename='/'>
         <App />
       </HashRouter>
   </Provider>, 
