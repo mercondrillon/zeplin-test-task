@@ -2,7 +2,7 @@ import 'antd/dist/antd.css';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { assignNotes, assignCodes } from '../actions';
-import { Route, withRouter, Link, history } from  'react-router-dom';
+import { Route, withRouter } from  'react-router-dom';
 import ClientForm from './ClientForm';
 import NoteList from './NoteList';
 import API from '../services/http';
@@ -25,14 +25,14 @@ class AppComponent extends Component {
 
   componentDidMount() {
     const { assignNotes, assignCodes } = this.props;
-    // request
+
     API().get('/Notes/GetAllNoteTypes')
       .then(({data}) => assignNotes(data));
 
     API().get('/Notes/GetAllReasonCodes')
       .then(({data}) => assignCodes(data));
 
-    this.props.history.push("/notes");
+    this.props.history.replace('/notes');
   }
 
   render() {
@@ -44,7 +44,6 @@ class AppComponent extends Component {
           onCollapse={this.onCollapse}
         >
           <div className="logo" />
-          
           <Navigation />
         </Sider>
         <Header style={{ background: '#fff', padding: 0 }}>
