@@ -27,13 +27,23 @@ class NoteListComponent extends React.Component {
   }
 
   componentWillReceiveProps({ notes }) {
-    this.setState({ notes });
+    const state = Object.assign({}, this.state);
+    state.notes = notes;
+    this.setState(state);
+  }
+
+  componentDidMount() {
+    const state = Object.assign({}, this.state);
+    if (isEmpty(state.notes)) {
+      state.notes = this.props.notes;
+      this.setState(state);
+    }
   }
 
   onSearchButton(value) {
     const state = Object.assign({}, this.state);
     if (!isEmpty(value)) {
-      const values = filter(this.props.notes, ({ Name, Description }) => (Name.indexOf(value) > -1 || Description.indexOf(value) > -1));
+      const values = filter(state.notes, ({ Name, Description }) => (Name.indexOf(value) > -1 || Description.indexOf(value) > -1));
       state.notes = values;
       this.setState(state);
     }
