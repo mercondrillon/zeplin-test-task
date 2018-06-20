@@ -1,16 +1,21 @@
 import 'antd/dist/antd.css';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { assignNotes, assignCodes } from '../actions';
 import { Route, withRouter } from  'react-router-dom';
+import { assignNotes, assignCodes, assignPatients } from '../actions';
 import ClientForm from './ClientForm';
 import NoteList from './NoteList';
 import API from '../services/http';
 import Navigation from './Navigation/Navigation';
 import LoadingBar from 'react-redux-loading-bar';
 import { Layout } from 'antd';
-
 const { Header, Content, Sider } = Layout;
+
+const mapDispatchToProps = (dispatch) => ({
+  assignNotes: notes => dispatch(assignNotes(notes)),
+  assignCodes: codes => dispatch(assignCodes(codes)),
+  assignPatients: patients => dispatch(assignPatients(patients)),
+});
 
 class AppComponent extends Component {
   state = {
@@ -24,7 +29,7 @@ class AppComponent extends Component {
   }
 
   componentDidMount() {
-    const { assignNotes, assignCodes } = this.props;
+    const { assignNotes, assignCodes, assignPatients } = this.props;
 
     API().get('/Notes/GetAllNoteTypes')
       .then(({data}) => assignNotes(data));
@@ -32,7 +37,20 @@ class AppComponent extends Component {
     API().get('/Notes/GetAllReasonCodes')
       .then(({data}) => assignCodes(data));
 
-    this.props.history.replace('/notes');
+    // API('https://patientportalwebservicepreprod.naiacorp.net/api/')
+    // .get('/PatientEHR/GetPatientsBySearchParameters', {
+    //   params: {
+    //     firstName: 'Terry',
+    //     lastName: '',
+    //     dateOfBirth: '',
+    //     age: '',
+    //     phoneNumber: '',
+    //     pcpId: '',
+    //     emailAddress: '',
+    //   }
+    // })
+    // .then(({data}) => assignPatients(data));
+    this.props.history.replace('/notes-create');
   }
 
   render() {
@@ -59,11 +77,6 @@ class AppComponent extends Component {
     );
   }
 }
-
-const mapDispatchToProps = (dispatch) => ({
-  assignNotes: notes => dispatch(assignNotes(notes)),
-  assignCodes: codes => dispatch(assignCodes(codes)),
-});
 
 const App = connect(null, mapDispatchToProps)(AppComponent);
 export default withRouter(App);

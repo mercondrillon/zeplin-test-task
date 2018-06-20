@@ -1,5 +1,5 @@
 import axios from 'axios';
 
-const API = () => axios.create({baseURL: 'https://ehrwebpreprod.naiacorp.net/api/'});
+const API = (baseURL) => axios.create({baseURL: baseURL || 'https://ehrwebpreprod.naiacorp.net/api/'});
 
 export default API;

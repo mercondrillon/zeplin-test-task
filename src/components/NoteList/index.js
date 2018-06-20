@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { chunk, truncate, filter, isEmpty, toLower } from 'lodash';
 import { Card, Icon, Row, Col, Modal, Input } from 'antd';
-  
+
 const MapStateToProps = state => ({
   notes: state.notes,
 });
@@ -78,7 +78,7 @@ class NoteListComponent extends React.Component {
     notes = chunk(notes, 4);
     return (
       <div>
-        <h1>Notes</h1>
+        <h1>Dashboard</h1>
         <Input.Search
           placeholder="input search text"
           onSearch={this.onSearchButton}

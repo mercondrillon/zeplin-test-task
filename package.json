@@ -39,6 +39,7 @@
     "react": "^16.4.0",
     "react-dev-utils": "^5.0.1",
     "react-dom": "^16.4.0",
+    "react-draft-wysiwyg": "^1.12.13",
     "react-redux-loading-bar": "^4.0.5",
     "react-router-dom": "^4.3.1",
     "resolve": "1.6.0",

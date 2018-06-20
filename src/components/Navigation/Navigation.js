@@ -7,7 +7,7 @@ const Navigation = () => (
     <Menu.Item key="1">
       <Link to="/notes">
         <Icon type="desktop" />
-        Notes
+        Dashboard
       </Link>
     </Menu.Item>
     <Menu.Item key="2">
